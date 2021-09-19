@@ -1,0 +1,113 @@
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+    //variables:
+    $white: hsl(0, 0%, 100%);
+    $bacground-color: hsl(270, 20%, 96%);
+    $light-text-color: hsl(270, 7%, 64%);
+    $dark-color: hsl(271, 36%, 24%);
+    $magenta-color: hsl(293, 100%, 63%);
+    $violet-color: hsl(264, 100%, 61%);
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-size: 16px;
+        font-family: 'Rubik', sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: $bacground-color;
+        line-height: 1.5;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        color: $dark-color;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        &:hover, &:focus, &:active {
+            text-decoration: inherit;
+        }
+    }
+
+    //section main
+    .section-main {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 80%;
+        }
+
+        &::before {
+            top: 0;
+            left: -210px;
+            background: linear-gradient(to top, hsl(264, 100%, 61%),hsl(293, 100%, 63%));
+            border-radius: 0 0 100% 100%;
+        }
+
+        &::after {
+            bottom: 0;
+            right: -210px;
+            background-color: hsl(282, 45%, 94%);
+            border-radius: 100% 100% 0 0;
+        }
+
+        .section-content {
+            width: 100%;
+            max-width: 500px;
+            background-color: $white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            z-index: 1;
+            .title {
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
+            .description {
+                color: $light-text-color;
+                margin-bottom: 25px;
+            }
+            .chat-btn {
+                padding: 12px 15px;
+                color: #fff;
+                border: 1px solid hsl(289, 100%, 72%);
+                overflow: hidden;
+                border-radius: 20px;
+                font-size: 17px;
+                background: linear-gradient(to right, $violet-color, $magenta-color);
+                font-weight: 700;
+                cursor: pointer;
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    //break points
+    @media (max-width: 576px) {
+        .section-main {
+            &::after {
+                display: none;
+            }
+            .section-content {
+                width: 85%;
+                .title {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
