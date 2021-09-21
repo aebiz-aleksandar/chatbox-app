@@ -87,7 +87,7 @@ a:hover, a:focus, a:active {
 
 .section-main .section-content .chat-btn {
   padding: 12px 15px;
-  color: #fff;
+  color: white;
   border: 1px solid #e570ff;
   overflow: hidden;
   border-radius: 20px;
@@ -100,6 +100,64 @@ a:hover, a:focus, a:active {
 
 .section-main .section-content .chat-btn i {
   margin-right: 5px;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background-color: white;
+  z-index: 10;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.chat-box .drag-element {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 100%;
+  height: 25px;
+  cursor: move;
+}
+
+.chat-box .resizer {
+  position: absolute;
+  background: transparent;
+}
+
+.chat-box .resizer.resizer-n {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  cursor: n-resize;
+}
+
+.chat-box .resizer.resizer-e {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  cursor: e-resize;
+}
+
+.chat-box .resizer.resizer-s {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  cursor: s-resize;
+}
+
+.chat-box .resizer.resizer-w {
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  cursor: w-resize;
 }
 
 @media (max-width: 576px) {
