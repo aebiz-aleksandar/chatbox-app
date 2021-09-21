@@ -2,6 +2,7 @@
 
     const dragEl = document.getElementById('dragElement');
     const chatBox = document.getElementById('chatBox');
+    const mainSection = document.querySelector('.section-main');
 
     //Event: Drag Move Element
     dragEl.addEventListener('mousedown', dragMoveElement);
@@ -14,6 +15,8 @@
 
         window.addEventListener('mousemove', moveElement);
         window.addEventListener('mouseup', dropMoveElement);
+
+        mainSection.style.userSelect = 'none';
 
         function moveElement(e) {
             const moveX = prevX - e.clientX;
@@ -49,5 +52,6 @@
         function dropMoveElement() {
             window.removeEventListener('mousemove', moveElement);
             window.removeEventListener('mouseup', dropMoveElement);
+            mainSection.style.userSelect = 'auto';
         }
     }
