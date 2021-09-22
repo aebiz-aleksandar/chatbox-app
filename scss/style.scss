@@ -105,16 +105,166 @@
         width: 350px;
         height: 500px;
         background-color: $white;
+        padding: 10px;
         z-index: 10;
         border: 1px solid #ccc;
-        border-radius: 10px;
-        .drag-element {
+        border-radius: 30px;
+        .chat-box-holder {
             position: absolute;
-            top: 1px;
-            left: 1px;
-            width: 100%;
-            height: 50px;
-            cursor: move;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: $bacground-color;
+            border-radius: 25px;
+            .chat-box-header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 30px 15px 10px;
+                background: linear-gradient(to right, $violet-color, $magenta-color);
+                border-radius: 25px 25px 10px 10px;
+                .chat-box-drag {
+                    position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: $white;
+                    width: 135px;
+                    height: 30px;
+                    border-radius: 0 0 15px 15px;
+                    cursor: move;
+                }
+                .header-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .content-left {
+                        display: flex;
+                        align-items: center;
+                        .close-chat {
+                            span {
+                                font-size: 25px;
+                                color: $white;
+                                cursor: pointer;
+                            }
+                        }
+                        .guest {
+                            display: flex;
+                            margin-left: 15px;
+                            .guest-image {
+                                width: 45px;
+                                height: 45px;
+                                img {
+                                    width: 45px;
+                                    height: 45px;
+                                    border: 2px solid white;
+                                    border-radius: 50%;
+                                }
+                            }
+                            .guest-info {
+                                margin-left: 10px;
+                                h5 {
+                                    margin-bottom: 0;
+                                    color: $white;
+                                }
+                                span {
+                                    color: $white;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                    .content-right {
+                        span {
+                            color: $white;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .chat-box-body {
+                position: absolute;
+                top: 85px;
+                padding: 15px 10px;
+                border-radius: 0 0 25px 25px;
+                width: 100%;
+                height: 70%;
+                overflow-y: auto;
+                .body-messages {
+                    .message {
+                        margin-bottom: 10px;
+                        padding: 15px;
+                        max-width: 180px;
+                        p {
+                            margin: 0;
+                            font-size: 14px;
+                        }
+                    }
+                    .guest-messages {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        margin-bottom: 15px;
+                        .guest-message {
+                            background: hsl(276, 76%, 94%);
+                            border-radius: 20px 20px 20px 10px;
+                            p {
+                                color: $violet-color;
+                            }
+                        }
+                    }
+                    .user-messages {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        margin-bottom: 15px;
+                        .user-message {
+                            background: $white;
+                            border-radius: 20px 20px 10px 20px;
+                            p {
+                                color: $dark-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .chat-box-footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                .message-input {
+                    background: $white;
+                    border: none;
+                    width: 100%;
+                    padding: 15px 50px 15px 20px;
+                    border-radius: 30px;
+                    outline: none;
+                    color: $light-text-color;
+                    &::placeholder {
+                        color: $light-text-color;
+                    }
+                }
+                .btn-send {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 25px;
+                    border: none;
+                    background: $dark-color;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    i {
+                        color: #fff;
+                        font-size: 20px;
+                    }
+                }
+            }
         }
         .resizer {
             position: absolute;
@@ -123,13 +273,13 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 1px;
+                height: 3px;
                 cursor: n-resize;
             }
             &.resizer-e {
                 top: 0;
                 right: 0;
-                width: 1px;
+                width: 3px;
                 height: 100%;
                 cursor: e-resize;
             }
@@ -137,13 +287,13 @@
                 bottom: 0;
                 right: 0;
                 width: 100%;
-                height: 1px;
+                height: 3px;
                 cursor: s-resize;
             }
             &.resizer-w {
                 bottom: 0;
                 left: 0;
-                width: 1px;
+                width: 3px;
                 height: 100%;
                 cursor: w-resize;
             }

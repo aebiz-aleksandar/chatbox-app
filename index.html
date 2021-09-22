@@ -28,7 +28,61 @@
 
         <!-- Chat Box -->
         <div class="chat-box" id="chatBox">
-            <div class="drag-element" id="dragElement"></div>
+            <div class="chat-box-holder">
+                <div class="chat-box-header">
+                    <div class="chat-box-drag" id="dragElement"></div>
+                    <div class="header-content">
+                        <div class="content-left">
+                            <div class="close-chat">
+                                <span class="fas fa-angle-left"></span>
+                            </div>
+                            <div class="guest">
+                                <div class="guest-image">
+                                    <img src="image/avatar.jpg" alt="avatar-img">
+                                </div>
+                                <div class="guest-info">
+                                    <h5 class="gust-name">Samuel Green</h5>
+                                    <span class="guest-active">Available to walk</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-right">
+                            <span class="fas fa-ellipsis-v"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-box-body">
+                    <div class="body-messages">
+                        <div class="guest-messages">
+                            <div class="guest-message message">
+                                <p>That sounds great. I’d be happy with that.</p>
+                            </div>
+                            <div class="guest-message message">
+                                <p>Could you send over some pictures of your dog, please?</p>
+                            </div>
+                        </div>
+                        <div class="user-messages">
+                            <div class="user-message message">
+                                <p>Here are a few pictures. She’s a happy girl!</p>
+                            </div>
+                            <div class="user-message message">
+                                <p>Can you make it?</p>
+                            </div>
+                        </div>
+                        <div class="guest-messages">
+                            <div class="guest-message message">
+                                <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-box-footer">
+                    <input type="text" class="message-input" placeholder="Type a message…">
+                    <button type="button" class="btn-send">
+                        <i class="fas fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
             <div class="resizer resizer-n"></div>
             <div class="resizer resizer-e"></div>
             <div class="resizer resizer-s"></div>
