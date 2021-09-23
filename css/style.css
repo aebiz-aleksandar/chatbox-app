@@ -27,6 +27,10 @@ a:hover, a:focus, a:active {
   text-decoration: inherit;
 }
 
+.hide {
+  display: none !important;
+}
+
 .section-main {
   display: -webkit-box;
   display: -ms-flexbox;

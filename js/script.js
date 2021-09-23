@@ -1,10 +1,15 @@
     //Variables:
 
+    const chatBtn = document.getElementById('chatBtn');
+    const closeBtn = document.getElementById('closeChatBtn');
     const dragEl = document.getElementById('dragElement');
     const chatBox = document.getElementById('chatBox');
     const mainSection = document.querySelector('.section-main');
     const chatBoxHolder = document.querySelector('.chat-box-holder');
     const resizers = document.querySelectorAll('.resizer');
+    const messageInput = document.getElementById('messageInput');
+    const sendMessBtn = document.getElementById('sendMess');
+    const bodyMessage = document.querySelector('.body-messages');
 
     let isResizing = false;
 
@@ -15,6 +20,14 @@
     resizers.forEach(resizer => {
         resizer.addEventListener('mousedown', resizeElement);
     });
+
+    //Event: Open Chat Box
+    chatBtn.addEventListener('click', openChatBox);
+    //Event: Close Chat Box
+    closeBtn.addEventListener('click', closeChatBox);
+
+    //Event: Send Message
+    sendMessBtn.addEventListener('click', sendMessage);
     
 
     //Function: Drag Move Element
@@ -155,4 +168,52 @@
             mainSection.style.userSelect = 'auto';
             chatBoxHolder.style.userSelect = 'auto';
         }
+    }
+
+    //Function: Open Chat Box
+    function openChatBox() {
+        if (chatBox.classList.contains('hide')) {
+            chatBox.classList.remove('hide');
+            scrollToLastMessage();
+        }
+    }
+
+    //Function: Close Chat Box
+    function closeChatBox() {
+        if (!chatBox.classList.contains('hide')) {
+            chatBox.classList.add('hide');
+        }
+    }
+
+    //Function: Send Message
+    function sendMessage() {
+        const inputValue = messageInput.value;
+        if (inputValue) {
+            const messagesChildren = bodyMessage.children[bodyMessage.children.length -1];
+            if (messagesChildren.classList.contains('user-messages')) {
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('user-message', 'message');
+                userMessage.innerHTML = `<p>${ inputValue }</p>`;
+                messagesChildren.appendChild(userMessage);
+            } else {
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('user-messages');
+                userMessage.innerHTML = `
+                <div class="user-message message">
+                    <p>${ inputValue }</p>
+                </div>`;
+                bodyMessage.appendChild(userMessage);
+            }
+            messageInput.value = '';
+            scrollToLastMessage();
+        }
+    }
+
+    //Function: Scroll To Last Message
+    function scrollToLastMessage() {
+        const chatBoxBody = document.querySelector('.chat-box-body');
+        const bodyMessageHeight = bodyMessage.getBoundingClientRect().height;
+        chatBoxBody.scrollTo({
+            top: bodyMessageHeight
+        });
     }

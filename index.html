@@ -27,13 +27,13 @@
         <!-- Section Main END -->
 
         <!-- Chat Box -->
-        <div class="chat-box" id="chatBox">
+        <div class="chat-box hide" id="chatBox">
             <div class="chat-box-holder">
                 <div class="chat-box-header">
                     <div class="chat-box-drag" id="dragElement"></div>
                     <div class="header-content">
                         <div class="content-left">
-                            <div class="close-chat">
+                            <div class="close-chat" id="closeChatBtn">
                                 <span class="fas fa-angle-left"></span>
                             </div>
                             <div class="guest">
@@ -77,8 +77,8 @@
                     </div>
                 </div>
                 <div class="chat-box-footer">
-                    <input type="text" class="message-input" placeholder="Type a message…">
-                    <button type="button" class="btn-send">
+                    <input type="text" id="messageInput" class="message-input" placeholder="Type a message…">
+                    <button type="button" class="btn-send" id="sendMess">
                         <i class="fas fa-angle-right"></i>
                     </button>
                 </div>
