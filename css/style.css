@@ -385,5 +385,8 @@ a:hover, a:focus, a:active {
   .section-main .section-content .title {
     font-size: 30px;
   }
+  .chat-box {
+    right: 5px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

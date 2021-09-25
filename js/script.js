@@ -28,6 +28,14 @@
 
     //Event: Send Message
     sendMessBtn.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', e => {
+        if (e.keyCode == 13 || e.which == 13) {
+            sendMessage();
+        }
+    });
+
+    //Event: Screen Resize
+    window.addEventListener('resize', screenResize);
     
 
     //Function: Drag Move Element
@@ -175,6 +183,7 @@
         if (chatBox.classList.contains('hide')) {
             chatBox.classList.remove('hide');
             scrollToLastMessage();
+            screenResize();
         }
     }
 
@@ -216,4 +225,35 @@
         chatBoxBody.scrollTo({
             top: bodyMessageHeight
         });
+    }
+
+    //Function: Resize Screen
+    function screenResize() {
+        const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+        const screenHeight = window.innerHeight || document.documentElement.clientHeight;
+        const rect = chatBox.getBoundingClientRect();
+        const xOp = rect.left + rect.width;
+        const yOp = rect.top + rect.height;
+
+        if (screenHeight <= 500) {
+            chatBox.style.height = '100%';
+            chatBox.style.bottom = 0;
+        }
+
+        if (xOp > screenWidth) {
+            const diffValue = xOp - screenWidth + 10;
+            chatBox.style.left = rect.left - diffValue + 'px';
+            if (rect.left - diffValue < 0) {
+                chatBox.style.left = 0;
+            }
+        }
+
+        if (yOp > screenHeight) {
+            const diffValue = yOp - screenHeight;
+            chatBox.style.top = rect.top - diffValue + 'px';
+            if (rect.top - diffValue < 0) {
+                chatBox.style.top = 0;
+            }
+            chatBox.style.bottom = 0;
+        }
     }
