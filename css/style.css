@@ -213,9 +213,35 @@ a:hover, a:focus, a:active {
   font-size: 12px;
 }
 
+.chat-box .chat-box-holder .chat-box-header .header-content .content-right {
+  position: relative;
+}
+
 .chat-box .chat-box-holder .chat-box-header .header-content .content-right span {
   color: white;
   cursor: pointer;
+}
+
+.chat-box .chat-box-holder .chat-box-header .header-content .content-right .clear-chat {
+  position: absolute;
+  padding: 5px 10px;
+  width: 105px;
+  top: 20px;
+  left: -100px;
+  background: #f2e4fb;
+  color: #8838ff;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.chat-box .chat-box-holder .chat-box-header .header-content .content-right .clear-chat:hover {
+  background: #8838ff;
+  color: #f2e4fb;
 }
 
 .chat-box .chat-box-holder .chat-box-body {

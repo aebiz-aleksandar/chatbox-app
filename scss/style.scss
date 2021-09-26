@@ -181,9 +181,29 @@
                         }
                     }
                     .content-right {
+                        position: relative;
                         span {
                             color: $white;
                             cursor: pointer;
+                        }
+                        .clear-chat {
+                            position: absolute;
+                            padding: 5px 10px;
+                            width: 105px;
+                            top: 20px;
+                            left: -100px;
+                            background: hsl(276, 76%, 94%);
+                            color: $violet-color;
+                            text-align: center;
+                            border-radius: 20px;
+                            font-weight: 500;
+                            cursor: pointer;
+                            transition: all 0.3s ease-in-out;
+                            z-index: 10;
+                            &:hover {
+                                background: $violet-color;
+                                color: hsl(276, 76%, 94%);
+                            }
                         }
                     }
                 }

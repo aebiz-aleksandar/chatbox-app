@@ -10,6 +10,8 @@
     const messageInput = document.getElementById('messageInput');
     const sendMessBtn = document.getElementById('sendMess');
     const bodyMessage = document.querySelector('.body-messages');
+    const openClearChatBtn = document.getElementById('openClearChat');
+    const clearChatBtn = document.getElementById('clearChat');
 
     let isResizing = false;
 
@@ -33,6 +35,19 @@
             sendMessage();
         }
     });
+
+    //Event: Open Hide Cleat Chat
+    openClearChatBtn.addEventListener('click', openHideClearChat);
+    window.addEventListener('click', e => {
+        if (e.target !== openClearChatBtn) {
+            if (!clearChatBtn.classList.contains('hide')) {
+                clearChatBtn.classList.add('hide');
+            }
+        }
+    });
+
+    //Event: Clear Chat
+    clearChatBtn.addEventListener('click', clearChat);
 
     //Event: Screen Resize
     window.addEventListener('resize', screenResize);
@@ -198,12 +213,23 @@
     function sendMessage() {
         const inputValue = messageInput.value;
         if (inputValue) {
-            const messagesChildren = bodyMessage.children[bodyMessage.children.length -1];
-            if (messagesChildren.classList.contains('user-messages')) {
-                const userMessage = document.createElement('div');
-                userMessage.classList.add('user-message', 'message');
-                userMessage.innerHTML = `<p>${ inputValue }</p>`;
-                messagesChildren.appendChild(userMessage);
+            const messagesChildren = bodyMessage.children;
+            if (messagesChildren.length > 0) {
+                const messagesChildrenLast = bodyMessage.children[bodyMessage.children.length -1];
+                if (messagesChildrenLast.classList.contains('user-messages')) {
+                    const userMessage = document.createElement('div');
+                    userMessage.classList.add('user-message', 'message');
+                    userMessage.innerHTML = `<p>${ inputValue }</p>`;
+                    messagesChildrenLast.appendChild(userMessage);
+                } else {
+                    const userMessage = document.createElement('div');
+                    userMessage.classList.add('user-messages');
+                    userMessage.innerHTML = `
+                    <div class="user-message message">
+                        <p>${ inputValue }</p>
+                    </div>`;
+                    bodyMessage.appendChild(userMessage);
+                }
             } else {
                 const userMessage = document.createElement('div');
                 userMessage.classList.add('user-messages');
@@ -225,6 +251,23 @@
         chatBoxBody.scrollTo({
             top: bodyMessageHeight
         });
+    }
+
+    //Function: Open Hide Clear Chat
+    function openHideClearChat() {
+        if (clearChatBtn.classList.contains('hide')) {
+            clearChatBtn.classList.remove('hide');
+        } else {
+            clearChatBtn.classList.add('hide');
+        }
+    }
+
+    //Function: Clear Chat
+    function clearChat() {
+        const bodyMessageChildren = bodyMessage.children;
+        while (bodyMessageChildren.length > 0) {
+            bodyMessage.removeChild(bodyMessageChildren[0]);
+        }
     }
 
     //Function: Resize Screen
